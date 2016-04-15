@@ -1,0 +1,25 @@
+.newsletter-panel {
+
+}
+
+.newsletter-panel hr {
+    margin: 10px;
+}
+
+.newsletter-header h3{
+    text-align: center;
+    margin: 10px;
+}
+
+.newsletter-info {
+    text-align:center;
+}
+
+.newsletter-info strong {
+    margin-top:10px;
+}
+
+.newsletter-info-text {
+    margin-top:10px;
+}
+
