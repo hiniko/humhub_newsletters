@@ -79,6 +79,11 @@ class Newsletter extends ActiveRecord
             3 => 'Occasionally'
         ];
     }
+
+    public function getSubscriptions()
+    {
+        return $this->hasMany(Subscription::className(), ['newsletter_id' => 'id']);
+    }
     
 }
 

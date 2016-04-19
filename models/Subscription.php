@@ -6,6 +6,7 @@
  */
 
 namespace humhub\modules\newsletters\models;
+namespace humhub\modules\newsletters\models\Newsletter;
 
 use Yii;
 use humhub\components\ActiveRecord;
@@ -35,6 +36,11 @@ class Subscription extends ActiveRecord
     public static function getUserSubscriptions($user_id)
     {
         return self::findAll(['user_id' => $user_id]);
+    }
+
+    public function getSubscription()
+    {
+        return $this->hasOne(Newsletter::className(), ['id' => 'newsletter_id']);
     }
 
 }

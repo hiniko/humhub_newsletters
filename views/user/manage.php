@@ -11,16 +11,14 @@ use yii\helpers\Url;
 <div class="panel-body">
     <p>Manage your subscription to space newsletters</p>
 
-    <?php foreach ($availableModules as $moduleId => $module): ?>
+    <?php foreach ($subscription as $sub): ?>
         <hr>
         <div class="media">
             <a class="pull-left" href="#">
-                <img src="<?php echo $module->getContentContainerImage($user); ?>"
-                     class="" width="64" height="64">
+                <?php echo $sub->id  ?>
             </a>
             <div class="media-body">
-                <h4 class="media-heading"><?php echo $module->getContentContainerName($user); ?></h4>
-                <p><?php echo $module->getContentContainerDescription($user); ?></p>
+                <?php echo $sub->newsletter->title; ?>
 
             </div>
         </div>
