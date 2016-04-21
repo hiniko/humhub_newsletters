@@ -34,7 +34,15 @@ class Subscription extends ActiveRecord
     
     public static function getUserSubscriptions($user_id)
     {
-        return self::findAll(['user_id' => $user_id]);
+        return self::find()
+            ->where(['user_id' => $user_id])
+            ->with('newsletter.space')
+            ->all();
+    }
+
+    public function getNewsletter()
+    {
+        return $this->hasOne(Newsletter::className(), ['id' => 'newsletter_id']);
     }
 
 }

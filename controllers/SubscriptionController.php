@@ -35,7 +35,7 @@ class SubscriptionController extends Controller {
 
         // Create a new subscription for user
         $subscription = new Subscription();
-        $subscription->newsletter_id = $newsletter->guid;
+        $subscription->newsletter_id = $newsletter->id;
         $subscription->user_id = Yii::$app->user->id;
         $subscription->space_id = $newsletter->space_id;
         $subscription->save();
@@ -58,7 +58,7 @@ class SubscriptionController extends Controller {
         }
 
         $existing = Subscription::findOne([
-            'newsletter_id' => $newsletter->guid,
+            'newsletter_id' => $newsletter->id,
             'user_id' => Yii::$app->user->id,
         ]);
 
