@@ -9,21 +9,15 @@ use humhub\modules\newsletters\models\Subscription;
 
 class UserController extends Controller {
 
+    public $subLayout = "@humhub/modules/user/views/account/_layout";
+
     public function actionManage()
     {
         
         $subscriptions = Subscription::getUserSubscriptions(Yii::$app->user->id);
 
-        $newsletter_ids = [];
-        foreach($subscriptions as $sub){
-            array_push($newsletter_ids, $sub->newsletter_id);
-        }
-
-        $newsletters = Newsletter::getNewsletters($newsletter_ids);
-
         return $this->render('manage', [
             'subscriptions' => $subscriptions,
-            'newsletters' => $newsletters
         ]);
     }
 }

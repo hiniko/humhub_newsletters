@@ -9,6 +9,7 @@ namespace humhub\modules\newsletters\models;
 
 use Yii;
 use humhub\components\ActiveRecord;
+use humhub\modules\space\models\Space;
 use humhub\modules\newsletters\models\Subscription;
 
 /**
@@ -52,7 +53,9 @@ class Newsletter extends ActiveRecord
     public function getSubscriberCount()
     {
         return count(
-            Subscription::find(['newsletter_id' => $this->guid])->all()
+            Subscription::find()
+            ->where(['newsletter_id' => $this->id])
+            ->all()
         );
     }
 
@@ -83,6 +86,11 @@ class Newsletter extends ActiveRecord
     public function getSubscriptions()
     {
         return $this->hasMany(Subscription::className(), ['newsletter_id' => 'id']);
+    }
+
+    public function getSpace()
+    {
+        return $this->hasOne(Space::className(), ['id' => 'space_id']);
     }
     
 }

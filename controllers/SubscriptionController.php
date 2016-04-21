@@ -58,7 +58,7 @@ class SubscriptionController extends Controller {
         }
 
         $existing = Subscription::findOne([
-            'newsletter_id' => $newsletter->guid,
+            'newsletter_id' => $newsletter->id,
             'user_id' => Yii::$app->user->id,
         ]);
 

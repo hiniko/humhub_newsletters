@@ -18,10 +18,10 @@ class SpaceController extends ContentContainerController
      */
     public function actionShow()
     {
-        $newsletter = Newsletter::findOne(['space_id' => $this->space->guid]);
+        $newsletter = Newsletter::findOne(['space_id' => $this->space->id]);
         $subscription = Subscription::findOne([
                 'user_id' => Yii::$app->user->id,
-                'space_id' => $this->space->guid
+                'space_id' => $this->space->id
             ]);
         
 
@@ -41,7 +41,7 @@ class SpaceController extends ContentContainerController
     */
     public function actionConfig()
     {
-       $newsletter = Newsletter::findOne(['space_id' => $this->space->guid]);
+       $newsletter = Newsletter::findOne(['space_id' => $this->space->id]);
 
        if ($newsletter === null){
            $newsletter = new Newsletter();
@@ -50,7 +50,7 @@ class SpaceController extends ContentContainerController
        
        if ($newsletter->load(Yii::$app->request->post()) && $newsletter->validate()) {
            
-           $newsletter->space_id = $this->space->guid;
+           $newsletter->space_id = $this->space->id;
            $newsletter->save();
 
            return $this->render('config', [ 
