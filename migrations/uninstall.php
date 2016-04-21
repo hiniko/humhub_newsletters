@@ -14,7 +14,7 @@ class uninstall extends Migration
     public function down()
     {
         echo "Uninstall does not support migration down";
-        return
+        return;
     }
 
 }
