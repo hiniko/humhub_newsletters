@@ -6,7 +6,6 @@
  */
 
 namespace humhub\modules\newsletters\models;
-namespace humhub\modules\newsletters\models\Newsletter;
 
 use Yii;
 use humhub\components\ActiveRecord;
