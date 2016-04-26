@@ -28,7 +28,19 @@
                      ->label('Newsletter Frequency');
             ?>
             <?= Html::SubmitButton('Save', ['class' => 'btn btn-primary']); ?>
+            <?php 
 
+                $button = Html::tag('i', '', ['class' => 'fa fa-close']);
+                echo Html::a($button . ' Delete Newsletter', 
+                [
+                    '/newsletters/space/delete', 
+                    'id' => $newsletter->id,
+                ],
+                [
+                    'class' => 'btn btn-danger pull-right',
+                ]);
+
+            ?>
             <?php ActiveForm::end(); ?>
             </div>
             <div class="col-sm-1"></div>

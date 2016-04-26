@@ -12,12 +12,11 @@ use humhub\modules\newsletters\widgets\Subscribe;
 
     <div class="panel-body">
         <p>Manage your subscription to space newsletters</p>
-        <hr />
 
         <?php 
             if (count($subscriptions) > 0):
                 foreach ($subscriptions as $sub): ?>
-            <hr>
+            <hr />
             <div class="media">
                 <div class="pull-right">
                     <?= Subscribe::widget([
@@ -46,6 +45,7 @@ use humhub\modules\newsletters\widgets\Subscribe;
                 </div>
             </div>
         <?php endforeach; else: ?>
+        <hr />
         <p><strong>You are not subscribed to any newsletters.</strong></p>
         <?php endif; ?>
     </div>
