@@ -22,7 +22,9 @@
                     'options' => ['style' => 'width:80px; min-width:80px;'],
                     'buttons' => [
                         'unsubscribe' => function($url, $model) {
-                            return Html::a('<i class="fa fa-close"></i>', $model->getUnsubscribeURL(), ['class' => 'btn btn-primary btn-xs tt']);
+                            return Html::a('<i class="fa fa-close"></i>', 
+                                $model->getUnsubscribeURL(), 
+                                ['class' => 'btn btn-danger btn-xs tt']);
                         },
                             ],
                         ],
