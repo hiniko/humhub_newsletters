@@ -8,7 +8,11 @@
 namespace humhub\modules\newsletters\models;
 
 use Yii;
+use yii\data\ActiveDataProvider;
+use yii\helpers\Url;
 use humhub\components\ActiveRecord;
+use humhub\modules\user\models\User;
+
 
 /**
  * This is the model class for table "Subscritpions"
@@ -40,6 +44,31 @@ class Subscription extends ActiveRecord
             ->all();
     }
 
+    public function getDataProvider($space_id){
+
+        $query = Subscription::find()
+            ->where(['space_id' => $space_id])
+            ->joinWith('user');
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['pageSize' => 50],
+        ]);
+
+        return $dataProvider;
+    } 
+
+    public function getUnsubscribeURL()
+    {
+        return Url::toRoute(
+            [
+                'subscription/unsubscribe',
+                'newsletter_id' => $this->newsletter->guid,
+                'redirect' => Yii::$app->request->getURL(),
+            ] 
+        );
+    }
+
     public function getNewsletter()
     {
         return $this->hasOne(Newsletter::className(), ['id' => 'newsletter_id']);
@@ -48,6 +77,11 @@ class Subscription extends ActiveRecord
     public function getSubscription()
     {
         return $this->hasOne(Newsletter::className(), ['id' => 'newsletter_id']);
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
 }

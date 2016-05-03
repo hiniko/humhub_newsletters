@@ -68,7 +68,7 @@ class SubscriptionController extends Controller {
         }
 
         $existing->delete();
-        Yii::$app->session->setFlash('sucess', 'You have unsubscribed');
+        Yii::$app->session->setFlash('sucess', 'Unsubscribed from '. $newsletter->name);
 
         return $this->redirect($redirectURL);
     }
